@@ -23,9 +23,9 @@ app.use(express.static('data'))
 
 app.get('/categories',(req,res)=>{
     fs.readFile("data/categories.json", "utf8", (err, jsonString) => {
-        res.json(jsonString)
         res.setHeader("Access-Control-Allow-Origin","*")
         res.setHeader("Access-Control-Allow-Credentials","true")
+        res.json(jsonString)
     })
 })
 
@@ -133,10 +133,9 @@ app.get('/refs',(req,res)=>{
             var finalPage = true
         }
         
-        
-        res.json({"refs":queryRefs,"finalPage":finalPage})
         res.setHeader("Access-Control-Allow-Origin","*")
         res.setHeader("Access-Control-Allow-Credentials","true")
+        res.json({"refs":queryRefs,"finalPage":finalPage})
     })
 })
 
@@ -182,15 +181,15 @@ app.get('/authorityCheck',(req,res)=>{
     var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
     for (let i=0;i<authorisedList.length;i++) {
         if (authorisedList[i] == userId) {
-            res.status('ok').send()
             res.setHeader("Access-Control-Allow-Origin","*")
             res.setHeader("Access-Control-Allow-Credentials","true")
+            res.status('ok').send()
             break
         }
     }
-    res.status('err').send()
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
+    res.status('err').send()
 })
 
 function createFileName() {
@@ -224,15 +223,15 @@ app.post('/new-ref',(req,res,next)=>{
 
     upload.single('image')(req, res, function (err) {
         if (err) {
-            res.json({msg: err.message})
             res.setHeader("Access-Control-Allow-Origin","*")
             res.setHeader("Access-Control-Allow-Credentials","true")
+            res.json({msg: err.message})
         } else {
             const file = req.file
             // console.log(file)
-            res.json({msg: 'ok'})
             res.setHeader("Access-Control-Allow-Origin","*")
             res.setHeader("Access-Control-Allow-Credentials","true")
+            res.json({msg: 'ok'})
             
             //append to refs.json
             var refsJsonFileContent = fs.readFileSync('data/refs.json')
@@ -303,9 +302,9 @@ app.post('/add-comment',(req,res)=>{
                 fs.writeFileSync('data/commentId.txt',commentId)
                 var jsonFile = JSON.stringify(jsonObj)
                 fs.writeFileSync('data/refs.json',jsonFile)
-                res.json({'status':'ok'}).send()
                 res.setHeader("Access-Control-Allow-Origin","*")
                 res.setHeader("Access-Control-Allow-Credentials","true")
+                res.json({'status':'ok'}).send()
                 break
             }
         }
@@ -328,9 +327,9 @@ app.post('/add-comment',(req,res)=>{
                     fs.writeFileSync('data/commentId.txt',commentId)
                     var jsonFile = JSON.stringify(jsonObj)
                     fs.writeFileSync('data/refs.json',jsonFile)
-                    res.json({'status':'ok'}).send()
                     res.setHeader("Access-Control-Allow-Origin","*")
                     res.setHeader("Access-Control-Allow-Credentials","true")
+                    res.json({'status':'ok'}).send()
                     break
                 }
             }
