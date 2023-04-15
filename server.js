@@ -7,9 +7,9 @@
 
 import express from 'express'
 import cors from 'cors'
-import fs from 'fs'
-import path from 'path'
-import multer from 'multer'
+import * from 'fs'
+import * from 'path'
+import * from 'multer'
 import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 
@@ -151,9 +151,9 @@ app.get('/refs/images',(req,res)=>{
             break
         }
     }
-    res.sendFile(__dirname+`/data/refs/${refId}.${fileExtension}`)
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
+    res.sendFile(__dirname+`/data/refs/${refId}.${fileExtension}`)
 })
 
 app.get('/discordUser',async(req,res)=>{
@@ -169,9 +169,9 @@ app.get('/discordUser',async(req,res)=>{
         if (!response.ok) throw new Error(`Error status code: ${response.status}`)
         return await response.json()
     }
-    res.json(await fetchUser(req.query.userId))
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
+    res.json(await fetchUser(req.query.userId))
 })
 
 app.get('/authorityCheck',(req,res)=>{
