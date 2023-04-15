@@ -8,7 +8,8 @@ const multer  = require('multer')
 //const serverless = require('serverless-http')
 require('dotenv').config()
 
-import fetch from 'node-fetch'
+
+const fetch = require('node-fetch')
 
 
 const app = express()//.Router()
