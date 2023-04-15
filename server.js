@@ -120,15 +120,15 @@ app.get('/refs',(req,res)=>{
         }
         if (queryRefs.length > 5) {
             var origQueryRefsLength = queryRefs.length
-            queryRefs = queryRefs.slice(pageIndexStart,pageIndexEnd)
+            var queryRefs = queryRefs.slice(pageIndexStart,pageIndexEnd)
             
             //page nav logic
             if (((origQueryRefsLength-queryRefs.length) % 5) == 0)
-                finalPage = true
+                var finalPage = true
             else 
-                finalPage = false
+                var finalPage = false
         }   else {
-            finalPage = true
+            var finalPage = true
         }
         
         
@@ -200,13 +200,13 @@ function createFileName() {
 app.post('/new-ref',(req,res,next)=>{
     createFileName()
     //get other form data from query
-    title = req.query.title
-    desc = req.query.desc
-    cat = req.query.cat
-    catPath = req.query.catPath
-    catPath = catPath.replace(/\s/g, "").replace(/>/g,'/')
-    catPath = catPath.toLowerCase()
-    userId = req.query.userId
+    var title = req.query.title
+    var desc = req.query.desc
+    var cat = req.query.cat
+    var catPath = req.query.catPath
+    var catPath = catPath.replace(/\s/g, "").replace(/>/g,'/')
+    var catPath = catPath.toLowerCase()
+    var userId = req.query.userId
 
     upload.single('image')(req, res, function (err) {
         if (err) {
@@ -217,8 +217,8 @@ app.post('/new-ref',(req,res,next)=>{
             res.json({msg: 'ok'})
             
             //append to refs.json
-            refsJsonFileContent = fs.readFileSync('data/refs.json')
-            refsJsonContent = JSON.parse(refsJsonFileContent)
+            var refsJsonFileContent = fs.readFileSync('data/refs.json')
+            var refsJsonContent = JSON.parse(refsJsonFileContent)
 
             refsJsonContent.push({
                 "refId": fs.readdirSync('data/refs').length,
@@ -240,7 +240,7 @@ app.post('/new-ref',(req,res,next)=>{
 
 
 function getCommentId(refs) {
-    highestCommentId = 0
+    var highestCommentId = 0
     for (let a=0;a<refs.length;a++) {
         if (refs[a].comments.length > 0) {
             for (let b=0;b<refs[a].comments.length;b++) {
@@ -261,19 +261,19 @@ function getCommentId(refs) {
 
 //comments
 app.post('/add-comment',(req,res)=>{
-    type = req.query.type
-    toRef = req.query.toRef
-    comment = req.query.comment
-    commenter = req.query.userId
+    var type = req.query.type
+    var toRef = req.query.toRef
+    var comment = req.query.comment
+    var commenter = req.query.userId
 
-    jsonStr = fs.readFileSync('data/refs.json')
-    jsonObj = JSON.parse(jsonStr)
+    var jsonStr = fs.readFileSync('data/refs.json')
+    var jsonObj = JSON.parse(jsonStr)
 
     if (type=='comment') {
         for (let i=0;i<jsonObj.length;i++) {
             if (jsonObj[i].refId == toRef) {
                 //commentId
-                commentId = getCommentId(jsonObj)
+                var commentId = getCommentId(jsonObj)
                 
                 jsonObj[i].comments.push({
                     "commentId": commentId,
@@ -283,7 +283,7 @@ app.post('/add-comment',(req,res)=>{
                 })
                 jsonObj[i].commentCount = jsonObj[i].commentCount + 1
                 fs.writeFileSync('data/commentId.txt',commentId)
-                jsonFile = JSON.stringify(jsonObj)
+                var jsonFile = JSON.stringify(jsonObj)
                 fs.writeFileSync('data/refs.json',jsonFile)
                 res.json({'status':'ok'}).send()
                 break
@@ -294,8 +294,8 @@ app.post('/add-comment',(req,res)=>{
             for (let x=0;x<jsonObj.comments.length;x++) {
                 if (jsonObj[i].comments[x].commentId == toRef) {
                     //commentId
-                    commentId = getCommentId(jsonObj)
-                    console.log(commentId)
+                    var commentId = getCommentId(jsonObj)
+                    //console.log(commentId)
 
                     //append comment
                     jsonObj[i].comments[x].push({
@@ -306,7 +306,7 @@ app.post('/add-comment',(req,res)=>{
                     })
                     jsonObj[i].commentCount = jsonObj[i].commentCount + 1
                     fs.writeFileSync('data/commentId.txt',commentId)
-                    jsonFile = JSON.stringify(jsonObj)
+                    var jsonFile = JSON.stringify(jsonObj)
                     fs.writeFileSync('data/refs.json',jsonFile)
                     res.json({'status':'ok'}).send()
                     break
@@ -317,10 +317,10 @@ app.post('/add-comment',(req,res)=>{
 })
 
 app.get('/incDownloadCount',(req,res)=>{
-    ref = req.query.ref
+    var ref = req.query.ref
 
-    jsonStr = fs.readFileSync('data/refs.json')
-    jsonObj = JSON.parse(jsonStr)
+    var jsonStr = fs.readFileSync('data/refs.json')
+    var jsonObj = JSON.parse(jsonStr)
     
     for (let i=0;i<jsonObj.length;i++) {
         if (jsonObj[i].refId == ref) {
@@ -329,7 +329,7 @@ app.get('/incDownloadCount',(req,res)=>{
         }
     }
 
-    jsonFile = JSON.stringify(jsonObj)
+    var jsonFile = JSON.stringify(jsonObj)
     fs.writeFileSync('data/refs.json',jsonFile)
 })
 app.listen(3001, ()=>{
