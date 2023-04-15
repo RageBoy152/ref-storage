@@ -69,16 +69,16 @@ function editDistance(s1, s2) {
     return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
   }
 app.get('/refs',(req,res)=>{
-    refCat = req.query.category
-    searchQuery = req.query.search
+    var refCat = req.query.category
+    var searchQuery = req.query.search
 
-    pageNum = req.query.page
-    pageIndexStart = (pageNum-1)*5
-    pageIndexEnd = pageNum*5
+    var pageNum = req.query.page
+    var pageIndexStart = (pageNum-1)*5
+    var pageIndexEnd = pageNum*5
 
     fs.readFile("data/refs.json", "utf8", (err, jsonString) => {
-        jsonObj = JSON.parse(jsonString)
-        queryRefs = []
+        var jsonObj = JSON.parse(jsonString)
+        var queryRefs = []
         if (searchQuery==null&&refCat!=null) {
             for (let i=0;i<jsonObj.length;i++) {
                 //category query
@@ -119,7 +119,7 @@ app.get('/refs',(req,res)=>{
             }
         }
         if (queryRefs.length > 5) {
-            origQueryRefsLength = queryRefs.length
+            var origQueryRefsLength = queryRefs.length
             queryRefs = queryRefs.slice(pageIndexStart,pageIndexEnd)
             
             //page nav logic
@@ -137,14 +137,14 @@ app.get('/refs',(req,res)=>{
 })
 
 app.get('/refs/images',(req,res)=>{
-    refId = req.query.refId
-    fileExtension = 'png'
+    var refId = req.query.refId
+    var fileExtension = 'png'
 
     //gets desired imgs file extension
-    imgs = fs.readdirSync(__dirname+'/data/refs')
+    var imgs = fs.readdirSync(__dirname+'/data/refs')
     for (i=0;i<imgs.length;i++) {
         if (parseInt(imgs[i].split('.')[0]) == parseInt(refId)) {
-            fileExtension = imgs[i].split('.')[1]
+            var fileExtension = imgs[i].split('.')[1]
             break
         }
     }
@@ -166,10 +166,10 @@ app.get('/discordUser',async(req,res)=>{
     res.json(await fetchUser(req.query.userId))
 })
 app.get('/authorityCheck',(req,res)=>{
-    authorityFor = req.query.type
-    userId = req.query.userId
+    var authorityFor = req.query.type
+    var userId = req.query.userId
 
-    authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
+    var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
     for (let i=0;i<authorisedList.length;i++) {
         if (authorisedList[i] == userId) {
             res.status('ok').send()
@@ -181,11 +181,11 @@ app.get('/authorityCheck',(req,res)=>{
 
 function createFileName() {
     //gets current ref count by counting files in data/refs
-    fileName = 1
-    fileName = fs.readdirSync('data/refs').length+1
+    var fileName = 1
+    var fileName = fs.readdirSync('data/refs').length+1
     
     //sets multer things
-    storage = multer.diskStorage({
+    var storage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, __dirname+'/data/refs/')
         },
@@ -194,7 +194,7 @@ function createFileName() {
             cb(null, fileName + path.extname(file.originalname))
         }
     })
-    upload = multer({storage: storage, limits: {fileSize:100000000}})    
+    var upload = multer({storage: storage, limits: {fileSize:100000000}})    
 }
 
 app.post('/new-ref',(req,res,next)=>{
