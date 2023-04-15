@@ -15,7 +15,7 @@ import fetch from 'node-fetch'
 
 const app = express()//.Router()
 
-appDir = 'https://ref-storage-api.onrender.com/'
+const appDir = 'https://ref-storage-api.onrender.com/'
 
 app.use(cors())
 app.use(express.json())
