@@ -145,7 +145,7 @@ app.get('/refs/images',(req,res)=>{
 
     //gets desired imgs file extension
     var imgs = fs.readdirSync("data/refs")
-    for (i=0;i<imgs.length;i++) {
+    for (let i=0;i<imgs.length;i++) {
         if (parseInt(imgs[i].split('.')[0]) == parseInt(refId)) {
             var fileExtension = imgs[i].split('.')[1]
             break
