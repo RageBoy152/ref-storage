@@ -20,7 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('data'))
 
-const appDir = ''
 
 app.get('/categories',(req,res)=>{
     fs.readFile("data/categories.json", "utf8", (err, jsonString) => {
@@ -145,7 +144,7 @@ app.get('/refs/images',(req,res)=>{
     var fileExtension = 'png'
 
     //gets desired imgs file extension
-    var imgs = fs.readdirSync(appDir+'/data/refs')
+    var imgs = fs.readdirSync("data/refs")
     for (i=0;i<imgs.length;i++) {
         if (parseInt(imgs[i].split('.')[0]) == parseInt(refId)) {
             var fileExtension = imgs[i].split('.')[1]
@@ -154,7 +153,7 @@ app.get('/refs/images',(req,res)=>{
     }
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    res.sendFile(appDir+`/data/refs/${refId}.${fileExtension}`)
+    res.sendFile(`data/refs/${refId}.${fileExtension}`)
 })
 
 app.get('/discordUser',async(req,res)=>{
@@ -201,7 +200,7 @@ function createFileName() {
     //sets multer things
     var storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, appDir+'/data/refs/')
+            cb(null, 'data/refs/')
         },
         filename: function (req, file, cb) {
             const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
