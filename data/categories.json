@@ -1,0 +1,219 @@
+{
+    "topCats": ["Space X", "NASA", "Roscosmos", "ESA", "ULA", "Rocket Lab", "Blue Origin", "Astra", "Space Stations", "CNSA", "Orbex", "Relativity Space", "Firefly"],
+    "subCats": [
+        {
+            "for": 0,
+            "subCategories": ["Starship", "Current Falcon", "Old Falcons", "Old Starships"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Stage 0", "Stage 1", "Stage 2", "Raptor", "Fully Stacked Starship"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Falcon 9", "Falcon Heavy", "Dragon 2", "Merlin 1D", "Launch Hardware"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Falcon 1", "Merlin 1C", "Dragon 1", "Falcon 5"]
+                },
+                {
+                    "for": 3,
+                    "links": ["ITS", "BFR", "2019 Starship"]
+                }
+            ]
+        },
+        {
+            "for": 1,
+            "subCategories": ["STS", "SLS", "Titan", "Saturn V", "Saturn 1 & 1B"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Orbiter", "SRBs", "ET", "Full Stack", "Launch Pad"]
+                },
+                {
+                    "for": 1,
+                    "links": ["SRBs", "Orion", "ICPS", "EUS", "Block 1", "Block 1B Cargo", "Block 1B Crew", "Block 2 Cargo", "Block 2 Crew", "Old Varients"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Titan I", "Titan II", "Titan III"]
+                },
+                {
+                    "for": 3,
+                    "links": ["Launch Tower", "Engines", "S-1C", "S-II", "S-IVB", "CSM", "LM", "Full Rocket"]
+                },
+                {
+                    "for": 4,
+                    "links": ["Engines", "S-I", "S-IV", "Launch Vehicles", "Launch Tower"]
+                }
+            ]
+        },
+        {
+            "for": 2,
+            "subCategories": ["Soyuz","Proton","N1","Buran Energia"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Launch Pad","Cargo","Crew","Soyuz Spacecraft","Progress Spacecraft"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Proton K", "Proton M"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Block A", "Block B", "Block C", "LK Lunar Lander","Full Rocket"]
+                },
+                {
+                    "for": 3,
+                    "links": ["Buran Spacecraft", "Energia", "Buran Engergia"]
+                }
+            ]
+        },
+        {
+            "for": 3,
+            "subCategories": ["Ariane","Vega","Spacecrafts"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Ariane 6","Ariane 5","Ariane IV","Ariane III","Ariane II","Ariane I"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Vega", "Vega C", "Vega E"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Cygnus (ATV)","Hermes","Space Rider"]
+                }
+            ]
+        },
+        {
+            "for": 4,
+            "subCategories": ["Delta","Atlas","Vulcan"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Delta II","Delta IV","Delta IV Heavy"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Atlas 2","Atlas 3","Atlas 5","Starliner"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Vulcan - Centaur","Centaur Upper Stage"]
+                }
+            ]
+        },
+        {
+            "for": 5,
+            "subCategories": ["Rockets","Engines","Launch Hardware"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Electron","Neutron"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Rutherford", "Archimedes"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Neutron Pad","Electron Pad"]
+                }
+            ]
+        },
+        {
+            "for": 6,
+            "subCategories": ["New Shepard","New Glenn"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["BE-3 Engine", "Capsule", "Booster","Full Rocket"]
+                },
+                {
+                    "for": 1,
+                    "links": ["BE-4 Engine","Booster","Upper Stage","LC-36", "Full Rocket"]
+                }
+            ]
+        },
+        {
+            "for": 7,
+            "subCategories": ["Rockets"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Rocket 3", "Rocket 4"]
+                }
+            ]
+        },
+        {
+            "for": 8,
+            "subCategories": ["ISS", "Lunar Gateway", "Sky Lab","Tiangong CSS", "MIR"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Full Station","Zvezda","Zarya","Destiny","Poisk","Harmony","Unity","Nauka-Prichal","Quest Airlock","Pirs","Tranquillity","Rassvet","Leonardo-mplm","Truss","BEAM"]
+                },
+                {
+                    "for": 1,
+                    "links": ["Full Station", "d-hab", "i-hab", "halo", "Power & Propulsion Element", "espirit", "Airlock", "Logistics Module"]
+                },
+                {
+                    "for": 2,
+                    "links": ["Full Station"]
+                },
+                {
+                    "for": 3,
+                    "links": ["Full Station","Tianhe","Wentian","Tianzhou","Mengtain","Xuntian Telescope"]
+                },
+                {
+                    "for": 4,
+                    "links": ["Full Station", "Kristall", "Base Block", "Spektr", "Kvant 1", "Kvant 2", "Prirdoda","MIR Docking Module"]
+                }
+            ]
+        },
+        {
+            "for": 9,
+            "subCategories": ["Long March Rockets"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Long March 1","Long March 2","Long March 3","Long March 4","Long March 5","Long March 6","Long March 7","Long March 8","Long March 9"]
+                }
+            ]
+        },
+        {
+            "for": 10,
+            "subCategories": ["Rockets"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Prime"]
+                }
+            ]
+        },
+        {
+            "for": 11,
+            "subCategories": ["Rockets"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Terran 1", "Terran R"]
+                }
+            ]
+        },
+        {
+            "for": 12,
+            "subCategories": ["Rockets"],
+            "finalLinks": [
+                {
+                    "for": 0,
+                    "links": ["Firefly Alpha"]
+                }
+            ]
+        }
+    ]
+}
