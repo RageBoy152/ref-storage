@@ -15,6 +15,8 @@ import fetch from 'node-fetch'
 
 const app = express()//.Router()
 
+appDir = 'https://ref-storage-api.onrender.com/'
+
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -144,7 +146,7 @@ app.get('/refs/images',(req,res)=>{
     var fileExtension = 'png'
 
     //gets desired imgs file extension
-    var imgs = fs.readdirSync("data/refs")
+    var imgs = fs.readdirSync(`${appDir}data/refs`)
     for (let i=0;i<imgs.length;i++) {
         if (parseInt(imgs[i].split('.')[0]) == parseInt(refId)) {
             var fileExtension = imgs[i].split('.')[1]
