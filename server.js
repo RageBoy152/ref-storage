@@ -20,6 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('data'))
 
+const __dirname = ''
 
 app.get('/categories',(req,res)=>{
     fs.readFile("data/categories.json", "utf8", (err, jsonString) => {
