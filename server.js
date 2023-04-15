@@ -7,10 +7,10 @@
 
 import express from 'express'
 import cors from 'cors'
-import 'fs'
-import 'path'
-import 'multer'
-import 'dotenv'
+import fs from 'fs'
+import path from 'path'
+import multer from 'multer'
+import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 
 const app = express()//.Router()
