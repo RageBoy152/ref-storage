@@ -24,6 +24,7 @@ app.use(express.static('data'))
 app.get('/categories',(req,res)=>{
     fs.readFile("data/categories.json", "utf8", (err, jsonString) => {
         res.json(jsonString)
+        res.setHeader("Access-Control-Allow-Credentials","true")
     })
 })
 
@@ -133,6 +134,7 @@ app.get('/refs',(req,res)=>{
         
         
         res.json({"refs":queryRefs,"finalPage":finalPage})
+        res.setHeader("Access-Control-Allow-Credentials","true")
     })
 })
 
@@ -149,7 +151,9 @@ app.get('/refs/images',(req,res)=>{
         }
     }
     res.sendFile(__dirname+`/data/refs/${refId}.${fileExtension}`)
+    res.setHeader("Access-Control-Allow-Credentials","true")
 })
+
 app.get('/discordUser',async(req,res)=>{
     const token = process.env.TOKEN
 
@@ -164,7 +168,9 @@ app.get('/discordUser',async(req,res)=>{
         return await response.json()
     }
     res.json(await fetchUser(req.query.userId))
+    res.setHeader("Access-Control-Allow-Credentials","true")
 })
+
 app.get('/authorityCheck',(req,res)=>{
     var authorityFor = req.query.type
     var userId = req.query.userId
@@ -173,10 +179,12 @@ app.get('/authorityCheck',(req,res)=>{
     for (let i=0;i<authorisedList.length;i++) {
         if (authorisedList[i] == userId) {
             res.status('ok').send()
+            res.setHeader("Access-Control-Allow-Credentials","true")
             break
         }
     }
     res.status('err').send()
+    res.setHeader("Access-Control-Allow-Credentials","true")
 })
 
 function createFileName() {
@@ -211,10 +219,12 @@ app.post('/new-ref',(req,res,next)=>{
     upload.single('image')(req, res, function (err) {
         if (err) {
             res.json({msg: err.message})
+            res.setHeader("Access-Control-Allow-Credentials","true")
         } else {
             const file = req.file
             // console.log(file)
             res.json({msg: 'ok'})
+            res.setHeader("Access-Control-Allow-Credentials","true")
             
             //append to refs.json
             var refsJsonFileContent = fs.readFileSync('data/refs.json')
@@ -286,6 +296,7 @@ app.post('/add-comment',(req,res)=>{
                 var jsonFile = JSON.stringify(jsonObj)
                 fs.writeFileSync('data/refs.json',jsonFile)
                 res.json({'status':'ok'}).send()
+                res.setHeader("Access-Control-Allow-Credentials","true")
                 break
             }
         }
@@ -309,6 +320,7 @@ app.post('/add-comment',(req,res)=>{
                     var jsonFile = JSON.stringify(jsonObj)
                     fs.writeFileSync('data/refs.json',jsonFile)
                     res.json({'status':'ok'}).send()
+                    res.setHeader("Access-Control-Allow-Credentials","true")
                     break
                 }
             }
@@ -331,7 +343,9 @@ app.get('/incDownloadCount',(req,res)=>{
 
     var jsonFile = JSON.stringify(jsonObj)
     fs.writeFileSync('data/refs.json',jsonFile)
+    res.setHeader("Access-Control-Allow-Credentials","true")
 })
+
 app.listen(3001, ()=>{
     console.log('Listening on port 3001')
 })
