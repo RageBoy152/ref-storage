@@ -5,7 +5,7 @@
 //const multer  = require('multer')
 //require('dotenv').config()
 
-import 'express'
+import express from 'express'
 import 'cors'
 import 'fs'
 import 'path'
