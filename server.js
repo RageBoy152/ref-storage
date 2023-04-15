@@ -6,7 +6,7 @@
 //require('dotenv').config()
 
 import express from 'express'
-import 'cors'
+import cors from 'cors'
 import 'fs'
 import 'path'
 import 'multer'
