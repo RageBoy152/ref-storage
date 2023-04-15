@@ -9,7 +9,7 @@ const multer  = require('multer')
 require('dotenv').config()
 
 
-const fetch = require('got')
+const fetch = require('node-fetch')
 
 
 const app = express()//.Router()
