@@ -8,7 +8,7 @@
 import express from 'express'
 import cors from 'cors'
 import * as fs from 'fs'
-import { dirname } from 'path'
+import * as from 'path'
 import * as multer from 'multer'
 import dotenv from 'dotenv'
 import fetch from 'node-fetch'
@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('data'))
 
-const appDir = dirname(require.main.filename)
+const appDir = ''
 
 app.get('/categories',(req,res)=>{
     fs.readFile("data/categories.json", "utf8", (err, jsonString) => {
