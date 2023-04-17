@@ -141,22 +141,6 @@ app.get('/refs',(req,res)=>{
     })
 })
 
-app.get('/refs/images',(req,res)=>{
-    var refId = req.query.refId
-    var fileExtension = 'png'
-
-    //gets desired imgs file extension
-    var imgs = fs.readdirSync(`${appDir}data/refs`)
-    for (let i=0;i<imgs.length;i++) {
-        if (parseInt(imgs[i].split('.')[0]) == parseInt(refId)) {
-            var fileExtension = imgs[i].split('.')[1]
-            break
-        }
-    }
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Credentials","true")
-    res.sendFile(`data/refs/${refId}.${fileExtension}`)
-})
 
 app.get('/discordUser',async(req,res)=>{
     const token = process.env.TOKEN
