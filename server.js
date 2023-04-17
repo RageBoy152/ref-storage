@@ -16,7 +16,7 @@ import { Octokit, App } from 'octokit'
 
 
 const octokit = new Octokit({
-  auth: process.env.OCTOKIT_TOKEN
+  auth: process.env.OCTOKIT_AUTH
 })
 
 const app = express()//.Router()
@@ -169,7 +169,7 @@ app.get('/refs',(req,res)=>{
 app.get('/discordUser',async(req,res)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    const token = process.env.DISCORD_TOKEN
+    const token = process.env.DISCORD_AUTH
     
     if (token != '') {
       const fetchUser = async id => {
