@@ -41,7 +41,7 @@ app.get('/categories',(req,res)=>{
 app.get('/refs/images',async (req,res)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    ref = req.query.refId
+    var ref = req.query.refId
     
     await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees/c80be1e1dffee3230071a69f8d4e7223cfbeeab9').then(res=>{
         for (let o=0;0<res.tree.length;o++) {
@@ -58,8 +58,8 @@ app.get('/refs/images',async (req,res)=>{
 
 //search functions
 function editDistance(s1, s2) {
-    s1 = s1.toLowerCase();
-    s2 = s2.toLowerCase();
+    var s1 = s1.toLowerCase();
+    var s2 = s2.toLowerCase();
   
     var costs = new Array();
     for (let i = 0; i <= s1.length; i++) {
