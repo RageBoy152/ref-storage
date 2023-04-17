@@ -14,7 +14,7 @@ import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import { Octokit, App } from 'octokit'
 
-
+const discordToken = process.env.DISCORD_AUTH
 const octokit = new Octokit({
   auth: process.env.OCTOKIT_AUTH
 })
@@ -169,12 +169,11 @@ app.get('/refs',(req,res)=>{
 app.get('/discordUser',async(req,res)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    const token = process.env.DISCORD_AUTH
     
-    if (token == 'nothing') {
+    if (discordToken == 'nothing') {
        console.log("correct")
        res.json({'status':'no auth token!'}).send()
-    } else if (token != 'nothing' ) {
+    } else if (discordToken != 'nothing' ) {
       console.log("getting user - incorrect!")
       const fetchUser = async id => {
         const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
