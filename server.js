@@ -15,6 +15,7 @@ import fetch from 'node-fetch'
 import { Octokit, App } from 'octokit'
 
 const discordToken = process.env.DISCORD_AUTH
+console.log(process.env.OCTOKIT_AUTH)
 const octokit = new Octokit({
   auth: process.env.OCTOKIT_AUTH
 })
