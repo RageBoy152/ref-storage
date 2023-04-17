@@ -14,7 +14,6 @@ import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import { Octokit, App } from 'octokit'
 
-console.log(process.env.OCTOKIT_AUTH,process.env.DISCORD_AUTH)
 
 const octokit = new Octokit({
   auth: process.env.OCTOKIT_AUTH
@@ -172,20 +171,21 @@ app.get('/discordUser',async(req,res)=>{
     res.setHeader("Access-Control-Allow-Credentials","true")
     const token = process.env.DISCORD_AUTH
     
-    if (token != '') {
+    if (token == '' || token == null)
+       res.json({'status':'no auth token!'})
+    else {
       const fetchUser = async id => {
-          const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
-              headers: {
-              Authorization: `Bot ${token}`,
-              cors: '*'
-              }
-          })
-          if (!response.ok) throw new Error(`Error status code: ${response.status}`)
-          return await response.json()
+        const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
+            headers: {
+            Authorization: `Bot ${token}`,
+            cors: '*'
+            }
+        })
+      if (!response.ok) throw new Error(`Error status code: ${response.status}`)
+      return await response.json()
       }
       res.json(await fetchUser(req.query.userId))
-    } else
-      res.json({'status':'no auth token!'})
+    }
 })
 
 
