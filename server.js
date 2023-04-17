@@ -167,22 +167,26 @@ app.get('/refs',(req,res)=>{
 
 
 app.get('/discordUser',async(req,res)=>{
-    const token = process.env.DISCORD_TOKEN
-
-    const fetchUser = async id => {
-        const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
-            headers: {
-            Authorization: `Bot ${token}`,
-            cors: '*'
-            }
-        })
-        if (!response.ok) throw new Error(`Error status code: ${response.status}`)
-        return await response.json()
-    }
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    res.json(await fetchUser(req.query.userId))
+    const token = process.env.DISCORD_TOKEN
+    
+    if (token != '') {
+      const fetchUser = async id => {
+          const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
+              headers: {
+              Authorization: `Bot ${token}`,
+              cors: '*'
+              }
+          })
+          if (!response.ok) throw new Error(`Error status code: ${response.status}`)
+          return await response.json()
+      }
+      res.json(await fetchUser(req.query.userId))
+    } else
+      res.json({'status':'no auth token!'})
 })
+
 
 app.get('/authorityCheck',(req,res)=>{
     var authorityFor = req.query.type
