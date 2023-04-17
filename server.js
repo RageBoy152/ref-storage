@@ -13,6 +13,11 @@ import * as multer from 'multer'
 import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 
+
+const octokit = new Octokit({
+  auth: process.env.OCTOKIT_TOKEN
+})
+
 const app = express()//.Router()
 
 const appDir = './'
@@ -29,6 +34,24 @@ app.get('/categories',(req,res)=>{
         res.setHeader("Access-Control-Allow-Credentials","true")
         res.json(jsonString)
     })
+})
+
+
+app.get('/refs/images',(req,res)=>{
+    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Credentials","true")
+    ref = req.query.refId
+    
+    await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees/c80be1e1dffee3230071a69f8d4e7223cfbeeab9').then(res=>{
+        for (let o=0;0<res.tree.length;o++) {
+            if (res.tree[o].path.split(".")[0] == ref)
+                filename = res.tree[o].path
+        }
+    })
+    if (!filename)
+        res.json({'filename':'err'})
+    else
+        res.json({'filename':filename})
 })
 
 
@@ -143,7 +166,7 @@ app.get('/refs',(req,res)=>{
 
 
 app.get('/discordUser',async(req,res)=>{
-    const token = process.env.TOKEN
+    const token = process.env.DISCORD_TOKEN
 
     const fetchUser = async id => {
         const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
