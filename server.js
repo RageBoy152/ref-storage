@@ -12,6 +12,7 @@ import * as path from 'path'
 import * as multer from 'multer'
 import dotenv from 'dotenv'
 import fetch from 'node-fetch'
+import Octokit from "https://cdn.skypack.dev/octokit?dts"
 
 
 const octokit = new Octokit({
