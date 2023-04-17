@@ -45,10 +45,9 @@ app.get('/refs/images',async (req,res)=>{
     var ref = req.query.refId
     
     await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees/c80be1e1dffee3230071a69f8d4e7223cfbeeab9').then(res=>{
-        console.log(res)
-        for (let o=0;0<res.tree.length;o++) {
-            if (res.tree[o].path.split(".")[0] == ref)
-                filename = res.tree[o].path
+        for (let o=0;0<res.data.tree.length;o++) {
+            if (res.data.tree[o].path.split(".")[0] == ref)
+                filename = res.data.tree[o].path
         }
     })
     if (!filename)
