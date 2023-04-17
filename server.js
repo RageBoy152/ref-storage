@@ -172,9 +172,9 @@ app.get('/discordUser',async(req,res)=>{
     const token = process.env.DISCORD_AUTH
     console.log(token,process.env.DISCORD_AUTH)
     
-    if (token == '' || token == null || token == 'nothing')
+    if (token == 'nothing') {
        res.json({'status':'no auth token!'}).send()
-    else {
+    } else if (token != 'nothing' ) {
       const fetchUser = async id => {
         const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
             headers: {
