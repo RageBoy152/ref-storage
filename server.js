@@ -14,6 +14,7 @@ import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import { Octokit, App } from 'octokit'
 
+console.log(process.env.OCTOKIT_AUTH,process.env.DISCORD_AUTH)
 
 const octokit = new Octokit({
   auth: process.env.OCTOKIT_AUTH
