@@ -167,10 +167,9 @@ app.get('/refs',(req,res)=>{
 
 
 app.get('/discordUser',async(req,res)=>{
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Credentials","true")
-    
     if (discordToken != 'nothing') {
+       res.setHeader("Access-Control-Allow-Origin","*")
+       res.setHeader("Access-Control-Allow-Credentials","true")
        res.json({'status':'no auth token!'}).send()
     } else if (discordToken == 'nothing' ) {
       const fetchUser = async id => {
@@ -183,6 +182,8 @@ app.get('/discordUser',async(req,res)=>{
       if (!response.ok) throw new Error(`Error status code: ${response.status}`)
       return await response.json()
       }
+      res.setHeader("Access-Control-Allow-Origin","*")
+      res.setHeader("Access-Control-Allow-Credentials","true")
       res.json(await fetchUser(req.query.userId)).send()
     }
 })
