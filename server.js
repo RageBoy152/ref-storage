@@ -170,7 +170,7 @@ app.get('/discordUser',async(req,res)=>{
     if (discordToken != 'nothing') {
        res.setHeader("Access-Control-Allow-Origin","*")
        res.setHeader("Access-Control-Allow-Credentials","true")
-       res.json({'status':'no auth token!'}).send()
+       res.json({'status':'no auth token!'})
     } else if (discordToken == 'nothing' ) {
       const fetchUser = async id => {
         const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
@@ -184,7 +184,7 @@ app.get('/discordUser',async(req,res)=>{
       }
       res.setHeader("Access-Control-Allow-Origin","*")
       res.setHeader("Access-Control-Allow-Credentials","true")
-      res.json(await fetchUser(req.query.userId)).send()
+      res.json(await fetchUser(req.query.userId))
     }
 })
 
