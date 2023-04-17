@@ -38,7 +38,7 @@ app.get('/categories',(req,res)=>{
 })
 
 
-app.get('/refs/images',(req,res)=>{
+app.get('/refs/images',async (req,res)=>{
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
     ref = req.query.refId
