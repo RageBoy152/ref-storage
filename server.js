@@ -171,10 +171,8 @@ app.get('/discordUser',async(req,res)=>{
     res.setHeader("Access-Control-Allow-Credentials","true")
     
     if (discordToken != 'nothing') {
-       console.log("correct")
        res.json({'status':'no auth token!'}).send()
     } else if (discordToken == 'nothing' ) {
-      console.log("getting user - incorrect!")
       const fetchUser = async id => {
         const response = await fetch(`https://discord.com/api/v9/users/${id}`, {
             headers: {
