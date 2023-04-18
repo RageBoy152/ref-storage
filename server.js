@@ -120,8 +120,8 @@ app.get('/refs',(req,res)=>{
         else if (refCat==null&&searchQuery!=null&&searchQuery!=null) {
             for (let i=0;i<jsonObj.length;i++) {
             //search query
-                splitTile = jsonObj[i].title.toLowerCase().split(' ')
-                titleSimilars = []
+                var splitTile = jsonObj[i].title.toLowerCase().split(' ')
+                var titleSimilars = []
                 for (let x=0;x<splitTile.length;x++) {
                     if (similarity(splitTile[x],searchQuery)>=0.7)
                         titleSimilars.push(2.5)
@@ -138,11 +138,11 @@ app.get('/refs',(req,res)=>{
                 if (similarity(jsonObj[i].categoryPath.replace('/','').replace('/','').replace('/',''),searchQuery)>=0.3)
                     titleSimilars.push(similarity(jsonObj[i].categoryPath.toLowerCase(),searchQuery)+2)
                 //gets avg similarity
-                avgTotal = 0
+                var avgTotal = 0
                 for (let y=0;y<titleSimilars.length;y++) {
                     avgTotal += titleSimilars[y]
                 }
-                avgSimilar = (avgTotal / titleSimilars.length)
+                var avgSimilar = (avgTotal / titleSimilars.length)
                 
                 //add current ref to array if avg similarity is above threshold
                 if (avgSimilar >= 0.625)
