@@ -192,10 +192,10 @@ app.get('/discordUser',async(req,res)=>{
 })
 
 
-app.get('/authorityCheck',(req,res)=>{
+app.get('/authorityCheck', async (req,res)=>{
     var authorityFor = req.query.type
     var userId = req.query.userId
-
+    
     const authFileFolderRaw = await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees')
     const authFileFolder = await authFileFolderRaw.json()
     console.log(authFileFolder)
