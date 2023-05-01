@@ -198,6 +198,7 @@ app.get('/authorityCheck',(req,res)=>{
 
     const authFileFolderRaw = await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees')
     const authFileFolder = await authFileFolderRaw.json()
+    console.log(authFileFolder)
     
     var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
     for (let i=0;i<authorisedList.length;i++) {
