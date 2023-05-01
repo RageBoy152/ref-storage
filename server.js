@@ -193,6 +193,8 @@ app.get('/discordUser',async(req,res)=>{
 
 
 app.get('/authorityCheck', async (req,res)=>{
+    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Credentials","true")
     var authorityFor = req.query.type
     var userId = req.query.userId
     
@@ -201,13 +203,9 @@ app.get('/authorityCheck', async (req,res)=>{
     
     for (let i=0;i<authFileJson.length;i++) {
         if (authFileJson[i] == userId) {
-            res.setHeader("Access-Control-Allow-Origin","*")
-            res.setHeader("Access-Control-Allow-Credentials","true")
             res.status('ok').send()
         }
     }
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Credentials","true")
     res.json({"status":'no-auth'}).send()
 })
 
