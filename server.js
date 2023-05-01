@@ -196,19 +196,19 @@ app.get('/authorityCheck', async (req,res)=>{
     var authorityFor = req.query.type
     var userId = req.query.userId
     
-    const authFileFolderRaw = await octokit.request('GET /repos/RageBoy152/ref-storage-api/git/trees')
-    const authFileFolder = await authFileFolderRaw.json()
-    console.log(authFileFolder)
+    const authFilerRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
+    const authFileJson = await authFileFolderRaw.json()
+    console.log(authFileJson)
     
-    var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
-    for (let i=0;i<authorisedList.length;i++) {
-        if (authorisedList[i] == userId) {
-            res.setHeader("Access-Control-Allow-Origin","*")
-            res.setHeader("Access-Control-Allow-Credentials","true")
-            res.status('ok').send()
-            break
-        }
-    }
+    //var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
+    //for (let i=0;i<authorisedList.length;i++) {
+    //    if (authorisedList[i] == userId) {
+    //        res.setHeader("Access-Control-Allow-Origin","*")
+    //        res.setHeader("Access-Control-Allow-Credentials","true")
+    //        res.status('ok').send()
+    //        break
+    //    }
+    //}
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
     res.status('err').send()
