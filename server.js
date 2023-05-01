@@ -196,8 +196,8 @@ app.get('/authorityCheck', async (req,res)=>{
     var authorityFor = req.query.type
     var userId = req.query.userId
     
-    const authFilerRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
-    const authFileJson = await authFileFolderRaw.json()
+    const authFileRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
+    const authFileJson = await authFileRaw.json()
     console.log(authFileJson)
     
     //var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
