@@ -209,7 +209,7 @@ app.get('/authorityCheck', async (req,res)=>{
     }
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    res.status('err').send()
+    res.status().send()
 })
 
 function createFileName() {
