@@ -15,7 +15,6 @@ import fetch from 'node-fetch'
 import { Octokit, App } from 'octokit'
 
 const discordToken = process.env.DISCORD_AUTH
-console.log(discordToken)
 
 const octokit = new Octokit({
   auth: process.env.OCTOKIT_AUTH
@@ -171,7 +170,6 @@ app.get('/refs',(req,res)=>{
 
 
 app.get('/discordUser',async(req,res)=>{
-  console.log(req.query.userId)
     if (discordToken != 'nothing') {
        res.setHeader("Access-Control-Allow-Origin","*")
        res.setHeader("Access-Control-Allow-Credentials","true")
@@ -184,7 +182,6 @@ app.get('/discordUser',async(req,res)=>{
             cors: '*'
             }
         })
-        console.log(await response)
       if (!response.ok) throw new Error(`Error status code: ${response.status}`)
       return await response.json()
       }
