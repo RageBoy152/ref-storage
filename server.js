@@ -170,6 +170,7 @@ app.get('/refs',(req,res)=>{
 
 
 app.get('/discordUser',async(req,res)=>{
+  console.log(req.query.userId)
     if (discordToken != 'nothing') {
        res.setHeader("Access-Control-Allow-Origin","*")
        res.setHeader("Access-Control-Allow-Credentials","true")
