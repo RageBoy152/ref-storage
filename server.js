@@ -198,17 +198,15 @@ app.get('/authorityCheck', async (req,res)=>{
     
     const authFileRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
     const authFileJson = await authFileRaw.json()
-    console.log(authFileJson)
     
-    //var authorisedList = fs.readFileSync(`data/${authorityFor}Ids.json`)
-    //for (let i=0;i<authorisedList.length;i++) {
-    //    if (authorisedList[i] == userId) {
-    //        res.setHeader("Access-Control-Allow-Origin","*")
-    //        res.setHeader("Access-Control-Allow-Credentials","true")
-    //        res.status('ok').send()
-    //        break
-    //    }
-    //}
+    for (let i=0;i<authFileJson.length;i++) {
+        if (authFileJson[i] == userId) {
+            res.setHeader("Access-Control-Allow-Origin","*")
+            res.setHeader("Access-Control-Allow-Credentials","true")
+            res.status('ok').send()
+            break
+        }
+    }
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
     res.status('err').send()
