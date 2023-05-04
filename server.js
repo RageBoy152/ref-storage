@@ -201,6 +201,8 @@ app.get('/authorityCheck', async (req,res)=>{
     const authFileRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
     const authFileJson = await authFileRaw.json()
     
+    console.log(authFileJson)
+    
     for (let i=0;i<authFileJson.length;i++) {
         if (authFileJson[i] == userId) {
             res.status('ok').send()
