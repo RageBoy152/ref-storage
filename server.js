@@ -204,8 +204,8 @@ app.get('/authorityCheck', async (req,res)=>{
         if (authFileJson[i] == userId)
             authsorized = 'ok'
     }
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Credentials","true")
+    // res.setHeader("Access-Control-Allow-Origin","*")
+    // res.setHeader("Access-Control-Allow-Credentials","true")
     res.json({"status":authsorized})
 })
 
