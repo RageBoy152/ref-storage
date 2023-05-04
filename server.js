@@ -206,7 +206,7 @@ app.get('/authorityCheck', async (req,res)=>{
     }
     res.setHeader("Access-Control-Allow-Origin","*")
     res.setHeader("Access-Control-Allow-Credentials","true")
-    res.json({"status":authsorized}).send()
+    res.json({"status":authsorized})
 })
 
 function createFileName() {
