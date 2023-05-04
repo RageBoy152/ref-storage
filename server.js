@@ -193,20 +193,20 @@ app.get('/discordUser',async(req,res)=>{
 
 
 app.get('/authorityCheck', async (req,res)=>{
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.setHeader("Access-Control-Allow-Credentials","true")
     var authorityFor = req.query.type
     var userId = req.query.userId
     
     const authFileRaw = await fetch(`https://raw.githubusercontent.com/RageBoy152/ref-storage-api/main/data/${authorityFor}Ids.json`)
     const authFileJson = await authFileRaw.json()
+    var authsorized = 'no-auth'
     
     for (let i=0;i<authFileJson.length;i++) {
-        if (authFileJson[i] == userId) {
-            res.json({"status":'ok'}).send()
-        }
+        if (authFileJson[i] == userId)
+            authsorized = 'ok'
     }
-    res.json({"status":'no-auth'}).send()
+    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Credentials","true")
+    res.json({"status":authsorized}).send()
 })
 
 function createFileName() {
