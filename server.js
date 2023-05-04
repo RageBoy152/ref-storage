@@ -202,7 +202,7 @@ app.get('/authorityCheck', async (req,res)=>{
     const authFileJson = await authFileRaw.json()
     
     for (let i=0;i<authFileJson.length;i++) {
-        if (parseInt(authFileJson[i]) == userId) {
+        if (authFileJson[i] == userId) {
             res.json({"status":'ok'}).send()
         }
     }
